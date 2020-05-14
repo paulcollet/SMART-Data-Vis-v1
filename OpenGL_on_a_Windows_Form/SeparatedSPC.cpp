@@ -103,18 +103,14 @@ void SeparatedSPC::drawData(float x1, float y1, float x2, float y2, int i, int j
 	glTranslatef(x1 + data.pan_x, y1 + data.pan_y, 0); // Translates starting position to draw
 	glBegin(GL_LINE_STRIP);
 
-	//glColor3ub(0, (index * 50), 100);
-	//glColor3ub(0, (data.classNum[i] * 50) + 1, 100);
 	int classnum = data.classNum[i] - 1;
-	glColor3ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2]);
+	glColor4ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2], data.classColor[classnum][3]);
 
 	glVertex2f(0 + xratio * data.xdata[i][j], 0 - yratio * data.ydata[i][j]); // starting vertex
 	glVertex2f((x2 - x1) + xratio * data.xdata[i][j + 1], (y2 - y1) - yratio * data.ydata[i][j + 1]); // ending vertex
 	glEnd();
 
-
-
-	glColor3ub(0, 0, 0);
+	glColor4ub(0, 0, 0, data.classColor[classnum][3]);
 	if (j == 0) {
 		glPointSize(4);
 	}
@@ -173,6 +169,7 @@ void SeparatedSPC::display() {
 	}
 
 	/* Plots the data. Outer loop for each dimension. Inner loop for data across each graph.  */
+ 
 	for (int i = 0; i < (signed)data.classNum.size(); i++)
 	{
 		int curClass = data.classNum[i] - 1;

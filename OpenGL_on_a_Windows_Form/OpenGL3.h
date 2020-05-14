@@ -192,8 +192,10 @@ namespace OpenGLForm
 		}
 
 		// CHANGE BACKGROUND COLOR
-		void setClassColor(float R, float G, float B, int classnumber) {
-			if (classnumber > 0 && classnumber <= data.numOfClasses) {
+		void setClassColor(float R, float G, float B, int classnumber) 
+		{
+			if (classnumber > 0 && classnumber <= data.numOfClasses) 
+			{
 				graph1.data.setClassColor(R, G, B, classnumber);
 				graph2.data.setClassColor(R, G, B, classnumber);
 				graph3.data.setClassColor(R, G, B, classnumber);
@@ -204,7 +206,22 @@ namespace OpenGLForm
 				graph8.data.setClassColor(R, G, B, classnumber);
 				graph9.data.setClassColor(R, G, B, classnumber);
 			}
+		}
 
+		void setAlpha(int classnumber)
+		{
+			if (classnumber > 0 && classnumber <= data.numOfClasses)
+			{
+				graph1.data.classAlpha(classnumber);
+				graph2.data.classAlpha(classnumber);
+				graph3.data.classAlpha(classnumber);
+				graph4.data.classAlpha(classnumber);
+				graph5.data.classAlpha(classnumber);
+				graph6.data.classAlpha(classnumber);
+				graph7.data.classAlpha(classnumber);
+				graph8.data.classAlpha(classnumber);
+				graph9.data.classAlpha(classnumber);
+			}
 		}
 
 		int getClassSize() {
@@ -242,7 +259,14 @@ namespace OpenGLForm
 
 		System::Void Render(System::Void)
 		{
+			//std::fstream g1;
+			//g1.open("S_CPC.csv", std::ios::in, std::ios::app);
+			//auto start = std::chrono::high_resolution_clock::now();
 			graph1.display();
+			//auto duration = std::chrono::duration_cast<std::chrono::microseconds>
+			//	(std::chrono::high_resolution_clock::now() - start);
+			//g1 << duration.count() << ",";
+			//g1.close();
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -273,6 +297,7 @@ namespace OpenGLForm
 		/// <summary>	Renders CSPC. </summary>
 		///
 		/// <author>	Allyn Vo </author>
+		/// 
 		///
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -339,7 +364,20 @@ namespace OpenGLForm
 
 		System::Void Render9(System::Void)
 		{
+			//std::fstream g9;
+			//g9.open("Dis_ConParC.csv", std::ios::in, std::ios::app);
+			//auto start = std::chrono::high_resolution_clock::now();
 			graph9.display();
+			//auto duration = std::chrono::duration_cast<std::chrono::microseconds>
+			//	(std::chrono::high_resolution_clock::now() - start);
+			//g9 << duration.count() << ",";
+			//g9.close();
+		}
+
+		// blank screen
+		void Render1(void)
+		{
+			graph2.blank();
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -408,7 +446,6 @@ namespace OpenGLForm
 
 		void setFileName(ClassData file) {
 			clearAllGraphData();
-
 
 			/* Opens the file and process the data */
 			//data.fileName = "input.csv";

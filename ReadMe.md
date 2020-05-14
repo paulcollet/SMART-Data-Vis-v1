@@ -2,7 +2,15 @@
 
 Updated version of: https://github.com/StudentMobileApp/SMART-Data-Visualization-Release-Versions
 
-May 1, 2020:
+Settings:
+SDK: Win 10 SDK 10.0.17763.0
+Platform Toolset: VS 2015 (v140)
+
+Installation Details:
+DeskTop Dev: C++/CLI support
+
+
+May 1, 2020
 
 Changes:
 
@@ -14,7 +22,7 @@ Changes:
 Personal Goals:
 
 1. A reset button if separated graphs were moved
-2. Mouse shows point/vector info?
+2. Mouse controls in general
 
 Personal Note: OpenMP/threading is problematic as openGL is not thread safe and the vector class is being used sequentially (i.e. vectorname.puck_back(x)).
 

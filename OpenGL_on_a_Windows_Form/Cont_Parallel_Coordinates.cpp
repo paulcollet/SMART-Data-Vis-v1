@@ -44,7 +44,7 @@ void Cont_Parallel_Coordinates::clearFields() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void Cont_Parallel_Coordinates::fillGraphLocations() {                                                                  
-	for (int i = 1; i <= data.xdata.size(); i++) {
+	for (int i = 1; i <= (signed)data.xdata.size(); i++) {
 		data.xgraphcoordinates.push_back(data.worldWidth / 2);
 		data.ygraphcoordinates.push_back(data.worldHeight / 2);
 	}
@@ -73,30 +73,32 @@ void Cont_Parallel_Coordinates::drawData(float x1, float y1, int index)
 	glTranslatef(x1 + data.pan_x, y1 + data.pan_y, 0);					// Translates starting position to draw
 	glBegin(GL_LINE_STRIP);												// Line color. (i*50) to adjust color for different dimensions
 
-	for (int i = 0; i < data.ydata.size(); i++) {
-		//glColor3ub(0, (data.classNum[i] * 50) + 1, 100);
+ 
+	for (int i = 0; i < (signed)data.ydata.size(); i++) {
+
 		int classnum = data.classNum[i] - 1;
-		glColor3ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2]);
-		for (int j = 0; j < data.ydata[0].size(); j++) {
-			if (j % (data.classsize) == 0) {
-				glColor3f(0.8f, 0.8f, 0.8f);
+
+		glColor4ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2], data.classColor[classnum][3]);
+
+		for (int j = 0; j < (signed)data.ydata[0].size(); j++) {
+			if (j % (data.classsize) == 0) 
+			{
+				glColor4f(0.8f, 0.8f, 0.8f, data.classColor[classnum][3]);
 				glVertex2f(xratio * (i), yratio * data.ydata[i][j] /* ydatatemp[i] */);
-				glColor3ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2]);
-				glVertex2f(xratio * (i), yratio * data.ydata[i][j] /* ydatatemp[i] */);
-			}
-			else {
-				glVertex2f(xratio * (i), yratio * data.ydata[i][j] /* ydatatemp[i] */);
+				glColor4ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2], data.classColor[classnum][3]);
 			}
 			
+			glVertex2f(xratio * (i), yratio * data.ydata[i][j] /* ydatatemp[i] */);			
 		}
 	}
 	glEnd();
 
-	//glPointSize(4);
-	//glBegin(GL_POINTS);
-	
-	for (int i = 0; i < data.ydata.size() /* ydatatemp.size() */; i++) {
-		for (int j = 0; j < data.ydata[0].size() /* numOfClasses */; j++) {
+ 
+	for (int i = 0; i < (signed)data.ydata.size() ; i++)
+	{
+		int classnum = data.classNum[i] - 1;
+		for (int j = 0; j < (signed)data.ydata[0].size() ; j++)
+		{
 			if (j == 0) {
 				glPointSize(6);
 			} // (3) Make a circle of the first point large than for the remaining  points in all visualizations (decrease other circles).
@@ -105,13 +107,12 @@ void Cont_Parallel_Coordinates::drawData(float x1, float y1, int index)
 			}
 			glBegin(GL_POINTS);
 
-			glColor3ub(128 + (j*30), 0, 0);
-			//glColor3ub(((data.classNum[i]-1) * 50) + 1, 0, 100);
+			glColor4ub(128 + (j*30), 0, 0, data.classColor[classnum][3]);
+
 			glVertex2f(xratio * (i), yratio * data.ydata[i][j]  /* ydatatemp[i] */);
 			glEnd();
 		}
 	}
-
 	
 	glPopMatrix();														// Removes the layer
 
@@ -134,13 +135,14 @@ void Cont_Parallel_Coordinates::sortGraph(ClassData& data)
 
 	data.getLabels();
 
-	for (int i = 1; i < (data.values.size()); i++)						// Columns
+ 
+	for (int i = 1; i < (signed)data.values.size(); i++)						// Columns
 	{     
 		int nodeClass = stoi(data.values[i][(data.values[0].size() - 1)]);			// Get the class of the node
 		if (nodeClass > data.numOfClasses)								// Get the highest class number
 			data.numOfClasses = nodeClass;
 		data.classNum.push_back(nodeClass);								// Add to vector of class numbers
-		for (int j = 1; j < (data.values[i].size() - 1); j++)			// Rows
+		for (int j = 1; j < (signed)(data.values[i].size() - 1); j++)			// Rows
 		{                                          
 			yCoord = stof(data.values[i][j]);
 			ydatatemp.push_back(yCoord);
@@ -216,8 +218,9 @@ void Cont_Parallel_Coordinates::normalizeData()
 	float min = 0;
 	float max = 0;
 
-	for (int j = 0; j < data.ydata[0].size(); j++) {                                               // Gets the min and max of every column
-		for (int i = 0; i < data.ydata.size(); i++) {
+ 
+	for (int j = 0; j < (signed)data.ydata[0].size(); j++) {                                               // Gets the min and max of every column
+		for (int i = 0; i < (signed)data.ydata.size(); i++) {
 			if (data.ydata[i][j] > max) {
 				max = data.ydata[i][j];
 			}
@@ -230,8 +233,9 @@ void Cont_Parallel_Coordinates::normalizeData()
 		max = 0;
 		min = 0;
 	}
-	for (int i = 0; i < data.ydata.size(); i++) {                                                  // Normalize the data from 0 - 1
-		for (int j = 0; j < data.ydata[0].size(); j++) {
+ 
+	for (int i = 0; i < (signed)data.ydata.size(); i++) {                                                  // Normalize the data from 0 - 1
+		for (int j = 0; j < (signed)data.ydata[0].size(); j++) {
 			float original = data.ydata[i][j];
 			float currentMin = minYcol[j];
 			float currentMax = maxYcol[j];

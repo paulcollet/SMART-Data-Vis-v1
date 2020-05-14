@@ -48,8 +48,8 @@ void Dist_Cont_Parallel_Coords::normalizeData() {													// Normalizes the 
 	float min = 0;
 	float max = 0;
 
-	for (int j = 0; j < data.ydata[0].size(); j++) {												// Gets the min and max of every column
-		for (int i = 0; i < data.ydata.size(); i++) {
+	for (int j = 0; j < (signed)data.ydata[0].size(); j++) {												// Gets the min and max of every column
+		for (int i = 0; i < (signed)data.ydata.size(); i++) {
 			if (data.ydata[i][j] > max) {
 				max = data.ydata[i][j];
 			}
@@ -62,8 +62,8 @@ void Dist_Cont_Parallel_Coords::normalizeData() {													// Normalizes the 
 		max = 0;
 		min = 0;
 	}
-	for (int i = 0; i < data.ydata.size(); i++) {													// Normalize the data from 0 - 1
-		for (int j = 0; j < data.ydata[0].size(); j++) {
+	for (int i = 0; i < (signed)data.ydata.size(); i++) {													// Normalize the data from 0 - 1
+		for (int j = 0; j < (signed)data.ydata[0].size(); j++) {
 			float original = data.ydata[i][j];
 			float currentMin = minYcol[j];
 			float currentMax = maxYcol[j];
@@ -97,8 +97,9 @@ void Dist_Cont_Parallel_Coords::sortDistances() {
 	std::vector<std::vector<float> > distanceX;														// Holds coords for the distance based time series
 	std::vector<std::vector<float> > distanceY;
 
-	for (int i = 0; i < data.ydata[0].size()/*ydata.size()*/; i++) {
-		for (int j = 1; j < data.ydata.size()/*ydata[0].size()*/; j++) {                            // Find abs(difference) between each index
+ 
+	for (int i = 0; i < (signed)data.ydata[0].size()/*ydata.size()*/; i++) {
+		for (int j = 1; j < (signed)data.ydata.size()/*ydata[0].size()*/; j++) {                            // Find abs(difference) between each index
 			current = data.ydata[j][i]/*ydata[i][j]*/;                                              // Get current value at index
 			coord = float(current - previous);
 			if (coord > data.ymax) {
@@ -127,8 +128,9 @@ void Dist_Cont_Parallel_Coords::sortDistances() {
 	std::vector<float> tempy;
 	std::vector<std::vector<float>> temp;
 
-	for (int i = 0; i < data.ydata.size(); i++) {
-		for (int j = 0; j < data.ydata[0].size(); j++) {
+ 
+	for (int i = 0; i < (signed)data.ydata.size(); i++) {
+		for (int j = 0; j < (signed)data.ydata[0].size(); j++) {
 			tempy.push_back(data.ydata[i][j]);
 		}
 		temp.push_back(tempy);
@@ -161,35 +163,36 @@ void Dist_Cont_Parallel_Coords::drawData(float x1, float y1, int index) {
 	glPushMatrix();																						// Makes a new layer
 	glTranslatef(x1 + data.pan_x, y1 + data.pan_y, 0);                                                  // Translates starting position to draw
 	glBegin(GL_LINE_STRIP);
-	for (int i = 0; i < data.ydata[0].size()/*  xdata[0].size()*/; i++) {        
+
+ 
+	for (int i = 0; i < (signed)data.ydata[0].size(); i++) {
 
 		int classnum = data.classNum[i] - 1;
-		glColor3ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2]);
+		glColor4ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2], data.classColor[classnum][3]);
 
-		for (int j = 0; j < data.ydata.size(); j++) {/*new loop*/
+		for (int j = 0; j < (signed)data.ydata.size(); j++) {/*new loop*/
 
 			if (j % (data.classNum.size()) == 0) {
-				glColor3f(0.8f, 0.8f, 0.8f);
+				glColor4f(0.8f, 0.8f, 0.8f, data.classColor[classnum][3]);
 				glVertex2f(xratio * i, yratio * data.ydata[j][i]);
-				glColor3ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2]);
-				glVertex2f(xratio * i, yratio * data.ydata[j][i]);
+				glColor4ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2], data.classColor[classnum][3]);
 			}
-			else {
-				glVertex2f(xratio * i, yratio * data.ydata[j][i]);
-			}
+
+			glVertex2f(xratio * i, yratio * data.ydata[j][i]);
 
 		}
 	}
 	glEnd();
 
-
-	for (int i = 0; i < data.ydata[0].size(); i++) { 
+ 
+	for (int i = 0; i < (signed)data.ydata[0].size(); i++) {
 		glPointSize(6);
-		for (int j = 0; j < data.ydata.size(); j++) {/*new loop*/
+		int classnum = data.classNum[i] - 1;
+		for (int j = 0; j < (signed)data.ydata.size(); j++) {/*new loop*/
 
 			glBegin(GL_POINTS);
 
-			glColor3ub(128 + (j * 30), 0, 0);
+			glColor4ub(128 + (j * 30), 0, 0, data.classColor[classnum][3]);
 
 			glVertex2f(xratio * i,
 				yratio * data.ydata[j][i]   /*    ydata[index][i]   */);
@@ -209,7 +212,7 @@ void Dist_Cont_Parallel_Coords::drawData(float x1, float y1, int index) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void Dist_Cont_Parallel_Coords::fillGraphLocations() {                                                                  
-	for (int i = 1; i <= data.xdata.size(); i++) {
+	for (int i = 1; i <= (signed)data.xdata.size(); i++) {
 		data.xgraphcoordinates.push_back(data.worldWidth / 2);
 		data.ygraphcoordinates.push_back(data.worldHeight / 2);
 	}
@@ -235,7 +238,6 @@ void Dist_Cont_Parallel_Coords::display() {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_LINE_SMOOTH);
 	glLineWidth(2);
-
 
 	data.drawGraph(data.xgraphcoordinates[0], data.ygraphcoordinates[0]);
 
@@ -265,12 +267,13 @@ void Dist_Cont_Parallel_Coords::sortGraph(ClassData& data) {
 
 	data.getLabels();
 
-	for (int i = 1; i < (data.values.size() ); i++) {                                                   // Columns
+ 
+	for (int i = 1; i < (signed)data.values.size(); i++) {                                                   // Columns
 		int nodeClass = stoi(data.values[i][(data.values[0].size() - 1)]);                              // Get the class of the node
 		if (nodeClass > data.numOfClasses)																// Get the highest class number
 			data.numOfClasses = nodeClass;
 		data.classNum.push_back(nodeClass);																// Add to vector of class numbers
-		for (int j = 1; j < (data.values[i].size() - 1); j++) {                                         // Rows
+		for (int j = 1; j < (signed)(data.values[i].size() - 1); j++) {                                         // Rows
 			yCoord = stof(data.values[i][j]);
 			ydatatemp.push_back(yCoord);
 			xdatatemp.push_back(count);

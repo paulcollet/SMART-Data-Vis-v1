@@ -3,7 +3,7 @@
 Updated version of: https://github.com/StudentMobileApp/SMART-Data-Visualization-Release-Versions
 
 Settings:
-SDK: Win 10 SDK 10.0.17763.0 
+SDK: Win 10 SDK 10.0.17763.0 \n
 Platform Toolset: VS 2015 (v140)
 
 Installation Details:

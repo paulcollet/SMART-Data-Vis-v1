@@ -69,7 +69,8 @@ void FileHandling::sortGraph(ClassData &data)
 
 	data.getLabels();
 
-	for (int i = 1; i < (data.values.size()); i++)					// OLD: for (int i = 1; i < (data.values.size() - 1); i++)
+ 
+	for (int i = 1; i < (signed)data.values.size(); i++)					// OLD: for (int i = 1; i < (data.values.size() - 1); i++)
 	{																	// Columns
 		int nodeClass = 
 			stoi(data.values[i][(data.values[0].size() - 1)]);          // Get the class of the node
@@ -77,7 +78,7 @@ void FileHandling::sortGraph(ClassData &data)
 			data.numOfClasses = nodeClass;
 		data.classNum.push_back(nodeClass);                             // Add to vector of class numbers
 
-		for (int j = 1; j < (data.values[i].size() - 1); j++)			// Rows
+		for (int j = 1; j < ((signed)data.values[i].size() - 1); j++)			// Rows
 		{                                          
 			if (xdatatemp.size() <= ydatatemp.size())					// Get X-coords
 			{                                        
@@ -120,8 +121,9 @@ void FileHandling::normalizeData(ClassData &data)
 	float min = 0;
 	float max = 0;
 
-	for (int j = 0; j < data.ydata[0].size(); j++) {                                               // Gets the min and max of every column
-		for (int i = 0; i < data.ydata.size(); i++) {
+ 
+	for (int j = 0; j < (signed)data.ydata[0].size(); j++) {                                               // Gets the min and max of every column
+		for (int i = 0; i < (signed)data.ydata.size(); i++) {
 			if (data.ydata[i][j] > max) {
 				max = data.ydata[i][j];
 			}
@@ -135,8 +137,10 @@ void FileHandling::normalizeData(ClassData &data)
 	maxYcol.push_back(max);
 	max = 0;
 	min = 0;
-	for (int i = 0; i < data.ydata.size(); i++) {                                                  // Normalize the data from 0 - 1
-		for (int j = 0; j < data.ydata[0].size(); j++) {
+
+ 
+	for (int i = 0; i < (signed)data.ydata.size(); i++) {                                                  // Normalize the data from 0 - 1
+		for (int j = 0; j < (signed)data.ydata[0].size(); j++) {
 			float original = data.ydata[i][j];
 			float currentMin = minYcol[0];
 			float currentMax = maxYcol[0];
@@ -164,8 +168,9 @@ void FileHandling::normalizeData(ClassData &data)
 	min = 0;
 	max = 0;
 
-	for (int j = 0; j < data.xdata[0].size(); j++) {                                               // Gets the min and max of every column
-		for (int i = 0; i < data.xdata.size(); i++) {
+ 
+	for (int j = 0; j < (signed)data.xdata[0].size(); j++) {                                               // Gets the min and max of every column
+		for (int i = 0; i < (signed)data.xdata.size(); i++) {
 			if (data.xdata[i][j] > max) {
 				max = data.xdata[i][j];
 			}
@@ -179,8 +184,10 @@ void FileHandling::normalizeData(ClassData &data)
 	maxXcol.push_back(max);
 	max = 0;
 	min = 0;
-	for (int i = 0; i < data.xdata.size(); i++) {                                                  // Normalize the data from 0 - 1
-		for (int j = 0; j < data.xdata[0].size(); j++) {
+
+ 
+	for (int i = 0; i < (signed)data.xdata.size(); i++) {                                                  // Normalize the data from 0 - 1
+		for (int j = 0; j < (signed)data.xdata[0].size(); j++) {
 			float original = data.xdata[i][j];
 			float currentMin = minXcol[0];
 			float currentMax = maxXcol[0];
@@ -212,8 +219,9 @@ void FileHandling::normalizeDataV2(ClassData &data)
 	float min = 0;
 	float max = 0;
 
-	for (int j = 0; j < data.ydata[0].size(); j++) {                                               // Gets the min and max of every column
-		for (int i = 0; i < data.ydata.size(); i++) {
+ 
+	for (int j = 0; j < (signed)data.ydata[0].size(); j++) {                                               // Gets the min and max of every column
+		for (int i = 0; i < (signed)data.ydata.size(); i++) {
 			if (data.ydata[i][j] > max) {
 				max = data.ydata[i][j];
 			}
@@ -234,8 +242,10 @@ void FileHandling::normalizeDataV2(ClassData &data)
 	float currentMin;
 	float currentMax;
 	float converted;
-	for (int i = 0; i < data.ydata.size(); i++) {                                                  // Normalize the data from 0 - 1
-		for (int j = 0; j < data.ydata[0].size(); j++) {
+
+ 
+	for (int i = 0; i < (signed)data.ydata.size(); i++) {                                                  // Normalize the data from 0 - 1
+		for (int j = 0; j < (signed)data.ydata[0].size(); j++) {
 			original = data.ydata[i][j];
 			currentMin = minYcol[0];
 			currentMax = maxYcol[0];

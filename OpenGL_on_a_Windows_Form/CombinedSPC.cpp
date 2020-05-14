@@ -55,9 +55,9 @@ CombinedSPC::CombinedSPC(ClassData &given, double worldW, double worldH)
 
 void CombinedSPC::fillGraphLocations()
 {
-	for (int k = 1; k <= data.xdata.size(); k++)
+	for (int k = 1; k <= (signed)data.xdata.size(); k++)
 	{
-		for (int i = 1; i <= data.classsize; i++)
+		for (int i = 1; i <= (signed)data.classsize; i++)
 		{
 			data.xgraphcoordinates.push_back(data.graphwidth * i + i * 5);
 			data.ygraphcoordinates.push_back(data.graphheight);
@@ -97,18 +97,14 @@ void CombinedSPC::drawData(float x1, float y1, float x2, float y2, int i, int j)
 	glTranslatef(x1 + data.pan_x, y1 + data.pan_y, 0);                      // Translates starting position to draw
 	glBegin(GL_LINE_STRIP);
 
-	//glColor3ub(0, (index * 50), 100);
-	//glColor3ub(0, (data.classNum[i] * 50) + 1, 100);
-
 	int classnum = data.classNum[i] - 1;
-	glColor3ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2]);
+	glColor4ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2], data.classColor[classnum][3]);
 
 	glVertex2f(0 + xratio * data.xdata[i][j], 0 - yratio * data.ydata[i][j]);                                     // starting vertex
 	glVertex2f((x2 - x1) + xratio * data.xdata[i][j + 1], (y2 - y1) - yratio * data.ydata[i][j + 1]);                         // ending vertex
 	glEnd();
 
-	
-	glColor3ub(0, 0, 0);    
+	glColor4ub(0, 0, 0, data.classColor[classnum][3]);
 	if (j == 0) {
 		glPointSize(4);
 	}
@@ -136,7 +132,8 @@ void CombinedSPC::drawData(float x1, float y1, float x2, float y2, int i, int j)
 /// <editor> Paul Collet </editor>
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void CombinedSPC::display() {
+void CombinedSPC::display() 
+{
 
 	glClearColor(194 / 255.0f, 206 / 255.0f, 218 / 255.0f, 0.0f);			//194, 206, 218. VisCanvas background color.
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -151,7 +148,7 @@ void CombinedSPC::display() {
 	glLoadIdentity();														// Reset the model-view matrix
 
 	/* Draws a graph for each dimension */
-	for (int i = 0; i < data.classsize; i++)
+	for (int i = 0; i < (signed)data.classsize; i++)
 	{
 		data.drawGraph(data.xgraphcoordinates[i], data.ygraphcoordinates[i]);
 	}
@@ -162,9 +159,10 @@ void CombinedSPC::display() {
 	glEnable(GL_LINE_SMOOTH);
 
 	/* Plots the data. Outer loop for each dimension. Inner loop for data across each graph.  */
-	for (int i = 0; i < data.xdata.size(); i++) {
 
-		for (int j = 0; j < data.classsize - 1; j++)
+	for (int i = 0; i < (signed)data.xdata.size(); i++) {
+
+		for (int j = 0; j < (signed)data.classsize - 1; j++)
 		{
 			drawData(	data.xgraphcoordinates[j],		data.ygraphcoordinates[j],
 						data.xgraphcoordinates[j + 1],	data.ygraphcoordinates[j + 1], i, j);

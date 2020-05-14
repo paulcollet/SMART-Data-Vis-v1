@@ -71,8 +71,8 @@ void SeparatedTS_SPC::normalizeData() {														// Normalizes the data
 	float min = 0;
 	float max = 0;
 	float xMAX = 0;
-	for (int j = 0; j < data.ydata[0].size(); j++) {                                        // Gets the min and max of every column
-		for (int i = 0; i < data.ydata.size(); i++) {
+	for (int j = 0; j < (signed)data.ydata[0].size(); j++) {                                        // Gets the min and max of every column
+		for (int i = 0; i < (signed)data.ydata.size(); i++) {
 			if (data.ydata[i][j] > max)
 				max = data.ydata[i][j];
 			if (data.ydata[i][j] < min)
@@ -82,8 +82,8 @@ void SeparatedTS_SPC::normalizeData() {														// Normalizes the data
 		maxYcol.push_back(max);
 	}
 
-	for (int i = 0; i < data.ydata.size(); i++) {											// Normalize the data from 0 - 1
-		for (int j = 0; j < data.ydata[0].size(); j++) {
+	for (int i = 0; i < (signed)data.ydata.size(); i++) {											// Normalize the data from 0 - 1
+		for (int j = 0; j < (signed)data.ydata[0].size(); j++) {
 			float original = data.ydata[i][j];
 			float currentMin = minYcol[j];
 			float currentMax = maxYcol[j];
@@ -99,8 +99,8 @@ void SeparatedTS_SPC::normalizeData() {														// Normalizes the data
 	data.ydata.clear();
 	data.ydata = convertedValues;															// Fill ydata coordinates with normalized data
 
-	for (int i = 0; i < data.ydata.size(); i++)												// Normalize X data
-		for (int j = 0; j < data.ydata[0].size(); j++)
+	for (int i = 0; i < (signed)data.ydata.size(); i++)												// Normalize X data
+		for (int j = 0; j < (signed)data.ydata[0].size(); j++)
 			data.xdata[i][j] = data.xdata[i][j] / xMAX;
 	data.ymax = 1;
 	data.xmax = 1;
@@ -119,8 +119,8 @@ void SeparatedTS_SPC::graphByPairs()
 	float xCoord = 0;
 	float yCoord = 0;
 
-	for (int i = 0; i < data.ydata.size(); i++) {											// Columns
-		for (int j = 0; j < data.ydata[0].size(); j++) {									// Rows
+	for (int i = 0; i < (signed)data.ydata.size(); i++) {											// Columns
+		for (int j = 0; j < (signed)data.ydata[0].size(); j++) {									// Rows
 			if (xdatatemp.size() <= ydatatemp.size()) {										// Get X-coords
 				xCoord = data.ydata[i][j];
 				xdatatemp.push_back(xCoord);
@@ -211,11 +211,10 @@ void SeparatedTS_SPC::drawData(float x1, float y1, int index, int curClass, int 
 	glTranslatef(x1 + data.pan_x, y1 + data.pan_y, 0);                                          // Translates starting position to draw
 	glLineWidth(2);
 	glBegin(GL_LINE_STRIP);
-
-	//glColor3ub(0, ((curClass + 1) * 50), 100);														// Line color
+													// Line color
 	int classnum = data.classNum[index] - 1;
-	glColor3ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2]);
-	//glColor3ub(data.classColor[(data.classNum[index] - 1)][0], data.classColor[(data.classNum[(data.classNum[index] - 1)])][1], data.classColor[(data.classNum[(data.classNum[index] - 1)])][2]);
+	glColor4ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2], data.classColor[classnum][3]);
+
 
 	for (int i = 0; i < data.classsize; i++) // Draw Left Vertex
 	{
@@ -224,11 +223,11 @@ void SeparatedTS_SPC::drawData(float x1, float y1, int index, int curClass, int 
 	glEnd();
 
 	if (j != (columns - 1)) {																				// Connect the time series graphs
-		if (index < data.classNum.size() - 1)
+		if (index < (signed)data.classNum.size() - 1)
 		{
 			glLineWidth(1);
 			glBegin(GL_LINE_STRIP);
-			glColor3ub(linecolor[0], linecolor[1], linecolor[2]);																// Line color
+			glColor4ub(linecolor[0], linecolor[1], linecolor[2], data.classColor[classnum][3]);																// Line color
 
 			glVertex2f(xratio * data.xdata[index][data.classsize - 1],
 				-yratio * data.ydata[index][data.classsize - 1]);
@@ -241,7 +240,7 @@ void SeparatedTS_SPC::drawData(float x1, float y1, int index, int curClass, int 
 
 	glPointSize(4);																				// Add point to show direction
 	glBegin(GL_POINTS);
-	glColor3ub(200, 0, 0);
+	glColor4ub(200, 0, 0, data.classColor[classnum][3]);
 
 	for (int i = 0; i < data.classsize; i++) 
 	{
@@ -262,7 +261,7 @@ void SeparatedTS_SPC::drawData(float x1, float y1, int index, int curClass, int 
 
 void SeparatedTS_SPC::fillGraphLocations()
 {                                                               
-	for (int k = 1; k <= data.xdata.size(); k++)
+	for (int k = 1; k <= (signed)data.xdata.size(); k++)
 	{
 		data.xgraphcoordinates.clear();
 		data.ygraphcoordinates.clear();
@@ -305,7 +304,7 @@ void SeparatedTS_SPC::display()
 
 	glLineWidth(2);
 
-	for (int k = 0; k < data.numOfClasses; k++)													// Draws a graph for each dimension
+	for (int k = 0; k < (signed)data.numOfClasses; k++)													// Draws a graph for each dimension
 	{
 		for (int i = 0; i < columns; i++)
 			data.drawGraph(data.xclasses[k][i], data.yclasses[k][i]);
@@ -316,7 +315,7 @@ void SeparatedTS_SPC::display()
 	int prevClass = 0;
 	int perClass = 0;
 
-	for (int q = 0; q < data.classNum.size(); q++) {                                            // Split by classes
+	for (int q = 0; q < (signed)data.classNum.size(); q++) {                                            // Split by classes
 		int temp = data.classNum[q] - 1;
 		if (temp == prevClass)
 			perClass = perClass + 1;
@@ -333,7 +332,7 @@ void SeparatedTS_SPC::display()
 	}
 	int countTotal = 0;
 	int previous = 0;
-	for (int k = 0; k < linesPerClass.size(); k++)
+	for (int k = 0; k < (signed)linesPerClass.size(); k++)
 	{
 		int temp = linesPerClass[k];
 		for (int i = 0; i < temp; i++)															// Plots for each dimension
@@ -369,7 +368,7 @@ void SeparatedTS_SPC::sortGraph2(ClassData& data)
 
 	data.getLabels();
 
-	for (int i = 1; i < (data.values.size()); i++)
+	for (int i = 1; i < (signed)data.values.size(); i++)
 	{
 		int nodeClass = stoi(data.values[i][(data.values[0].size() - 1)]);
 
@@ -378,7 +377,8 @@ void SeparatedTS_SPC::sortGraph2(ClassData& data)
 
 		data.classNum.push_back(nodeClass);
 
-		for (int j = 1; j < (data.values[i].size() - 1); j++)
+ 
+		for (int j = 1; j < ((signed)data.values[i].size() - 1); j++)
 		{
 			yCoord = stof(data.values[i][j]);
 
@@ -413,8 +413,9 @@ void SeparatedTS_SPC::sortGraph2(ClassData& data)
 
 void SeparatedTS_SPC::findClickedGraph(double x, double y) {
 
-	for (int i = 0; i < data.xclasses.size(); i++) {
-		for (int j = 0; j < data.xclasses[0].size(); j++) {
+ 
+	for (int i = 0; i < (signed)data.xclasses.size(); i++) {
+		for (int j = 0; j < (signed)data.xclasses[0].size(); j++) {
 			if (data.xclasses[i][j] + data.pan_x - (data.graphwidth / 2) <= x && x <= data.xclasses[i][j] + data.pan_x + (data.graphwidth / 2)
 				&&
 				data.yclasses[i][j] + data.pan_y - (data.graphheight / 2) <= y && y <= data.yclasses[i][j] + data.pan_y + (data.graphheight / 2)) {

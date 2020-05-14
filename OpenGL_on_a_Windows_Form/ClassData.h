@@ -259,7 +259,7 @@ public:
 	void getLabels()
 	{
 		//stores x axis labels, but skips first and last cell
-		for (int label = 1; label < values[0].size() - 1; label++)
+		for (int label = 1; label < (signed)values[0].size() - 1; label++)
 		{
 			if (label > 1) xlabels += ",";
 			if (!is_digits(values[0][label]))
@@ -268,7 +268,7 @@ public:
 		}
 
 		//stores y axis labels
-		for (int label = 1; label < values.size(); label++)
+		for (int label = 1; label < (signed)values.size(); label++)
 		{
 			if (label > 1) ylabels += ",";
 			if (!is_digits(values[label][0]))
@@ -285,7 +285,7 @@ public:
 		int i = 0;
 		for (c = string; *c != ' '; c++)
 		{
-			if (i < strlen(string))
+			if (i < (signed)strlen(string))
 			{
 				glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, *c);
 			}

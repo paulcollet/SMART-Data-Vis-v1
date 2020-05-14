@@ -60,8 +60,8 @@ void TimeSeries_Dist::normalizeData()
 	float min = 0;
 	float max = 0;
 
-	for (int j = 0; j < data.ydata[0].size(); j++) {                                               // Gets the min and max of every column
-		for (int i = 0; i < data.ydata.size(); i++) {
+	for (int j = 0; j < (signed)data.ydata[0].size(); j++) {                                               // Gets the min and max of every column
+		for (int i = 0; i < (signed)data.ydata.size(); i++) {
 			if (data.ydata[i][j] > max) {
 				max = data.ydata[i][j];
 			}
@@ -75,8 +75,8 @@ void TimeSeries_Dist::normalizeData()
 	max = 0;
 	min = 0;
 
-	for (int i = 0; i < data.ydata.size(); i++) {                                                  // Normalize the data from 0 - 1
-		for (int j = 0; j < data.ydata[0].size(); j++) {
+	for (int i = 0; i < (signed)data.ydata.size(); i++) {                                                  // Normalize the data from 0 - 1
+		for (int j = 0; j < (signed)data.ydata[0].size(); j++) {
 			float original = data.ydata[i][j];
 			float currentMin = minYcol[0];
 			float currentMax = maxYcol[0];
@@ -112,8 +112,8 @@ void TimeSeries_Dist::sortDistances()
 	std::vector<std::vector<float> > distanceX;														// Holds coords for the distance based time series
 	std::vector<std::vector<float> > distanceY;
 
-	for (int i = 0; i < data.ydata.size(); i++) {
-		for (int j = 1; j < data.ydata[0].size(); j++) {											// Find abs(difference) between each index
+	for (int i = 0; i < (signed)data.ydata.size(); i++) {
+		for (int j = 1; j < (signed)data.ydata[0].size(); j++) {											// Find abs(difference) between each index
 			current = data.ydata[i][j];																// Get current value at index
 			coord = float(current - previous);
 			if (coord > data.ymax) {
@@ -146,7 +146,7 @@ void TimeSeries_Dist::sortDistances()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void TimeSeries_Dist::fillGraphLocations() {
-	for (int i = 1; i <= data.xdata.size(); i++) {
+	for (int i = 1; i <= (signed)data.xdata.size(); i++) {
 		data.xgraphcoordinates.push_back(data.worldWidth / 2);                                                   
 		data.ygraphcoordinates.push_back(data.graphheight * i + i * 10);
 	}
@@ -175,21 +175,18 @@ void TimeSeries_Dist::drawData(float x1, float y1, int index)
 	glTranslatef(x1 + data.pan_x, y1 + data.pan_y, 0);                                              // Translates starting position to draw
 	glBegin(GL_LINE_STRIP);
 
-	//glColor3ub(0, (index * 50), 100);
-	//glColor3ub(0, (data.classNum[index] * 50) + 1, 100);																// Line color
 	int classnum = data.classNum[index] - 1;
-	glColor3ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2]);
+	glColor4ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2], data.classColor[classnum][3]);
 
-	for (int i = 0; i < data.xdata[0].size(); i++)
+	for (int i = 0; i < (signed)data.xdata[0].size(); i++)
 	{
 		glVertex2f(xratio * data.xdata[index][i], -yratio * data.ydata[index][i]);
 	}
 	glEnd();
-	//glPointSize(4);
-	//glBegin(GL_POINTS);
-	glColor3ub(0, 0, 0);
 
-	for (int i = 0; i < data.ydata[0].size(); i++)
+	glColor4ub(0, 0, 0, data.classColor[classnum][3]);
+
+	for (int i = 0; i < (signed)data.ydata[0].size(); i++)
 	{                                         
 		if (i == 0) {
 			glPointSize(4);
@@ -232,11 +229,12 @@ void TimeSeries_Dist::display()
 
 	glLineWidth(2);
 
-	for (int i = 0; i < data.numOfClasses; i++)														// Draw each class graph
+	for (int i = 0; i < (signed)data.numOfClasses; i++)														// Draw each class graph
 		data.drawGraph(data.xgraphcoordinates[i], data.ygraphcoordinates[i]);
 	glLoadIdentity();																				// Reset the model-view matrix
 
-	for (int i = 0; i < data.classNum.size(); i++) {
+ 
+	for (int i = 0; i < (signed)data.classNum.size(); i++) {
 		int curClass = (data.classNum[i]) - 1;
 		drawData(data.xgraphcoordinates[curClass], data.ygraphcoordinates[curClass], i);
 	}
@@ -260,12 +258,13 @@ void TimeSeries_Dist::sortGraph2()
 
 	data.getLabels();
 
-	for (int i = 1; i < (data.values.size()); i++) {                                                // Columns
+ 
+	for (int i = 1; i < (signed)data.values.size(); i++) {                                                // Columns
 		int nodeClass = stoi(data.values[i][(data.values[0].size() - 1)]);                          // Get the class of the node
 		if (nodeClass > data.numOfClasses)                                                          // Get the highest class number
 			data.numOfClasses = nodeClass;
 		data.classNum.push_back(nodeClass);                                                         // Add to vector of class numbers
-		for (int j = 1; j < (data.values[i].size() - 1); j++) {                                     // Rows
+		for (int j = 1; j < (signed)(data.values[i].size() - 1); j++) {                                     // Rows
 			yCoord = stof(data.values[i][j]);
 			ydatatemp.push_back(yCoord);
 			xdatatemp.push_back(count);

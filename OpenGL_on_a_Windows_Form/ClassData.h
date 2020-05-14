@@ -26,23 +26,34 @@ class ClassData // copy class before changing
 public: 
 	std::vector<std::vector<float> > classColor;
 
-	void setClassColors() {
-		for (int i = 0; i < numOfClasses; i++) {
+	void setClassColors() 
+	{
+		for (int i = 0; i < numOfClasses; i++) 
+		{
 			classColor.push_back({});
-			//0, (data.classNum[i] * 50) + 1, 100
 			classColor[i].push_back(0);
 			classColor[i].push_back((i + 1) * 50 + 1);
 			classColor[i].push_back(100);
+			classColor[i].push_back(255.0);
 		}
 	}
-	void setClassColor(float R, float G, float B, int classnum) {
-		if(!classColor[classnum - 1].empty()){
-			classColor[classnum-1].clear();
-			classColor[classnum - 1].push_back(R);
-			classColor[classnum - 1].push_back(G);
-			classColor[classnum - 1].push_back(B);
-		}
 
+	void setClassColor(float R, float G, float B, int classnum) 
+	{
+		classColor[classnum - 1].clear();
+		classColor[classnum - 1] = { R, G, B, 255.0 };
+	}
+
+	void classAlpha(int classnum)
+	{
+		if (classColor[classnum - 1][3] == 255.0)
+		{
+			classColor[classnum - 1][3] = 0.0;
+		}
+		else
+		{
+			classColor[classnum - 1][3] = 255.0;
+		}
 	}
 
 
@@ -231,7 +242,6 @@ public:
 		glTranslatef(x + pan_x, y + pan_y, 0.0f);
 		glScalef((graphwidth / 2), (graphheight / 2), 0.0f);
 		glBegin(GL_LINE_STRIP);
-
 		glColor3ub(0, 0, 0); // Line color
 		glVertex2f(-1, -1);
 		glVertex2f(-1, 1);
@@ -244,6 +254,7 @@ public:
 	{
 		return str.find_first_not_of("0123456789") == std::string::npos;
 	}
+
 	//late entry: separate function for adding x,y labels
 	void getLabels()
 	{

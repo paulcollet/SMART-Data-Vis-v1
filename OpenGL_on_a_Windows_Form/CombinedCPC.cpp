@@ -53,12 +53,11 @@ CombinedCPC::CombinedCPC(ClassData &given, double worldW, double worldH)
 /// <editor>  Paul Collet </editor>
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void CombinedCPC::fillGraphLocations() {
-
+void CombinedCPC::fillGraphLocations() 
+{
 	for (int i = 1; i <= (signed)data.xdata.size(); i++) {
 		data.xgraphcoordinates.push_back(data.worldWidth / 2);			// 600 is the window width which will need to be variable later.
 		data.ygraphcoordinates.push_back(data.graphheight * i + i * 10);
-
 	}
 
 	for (int i = 0; i < (signed)data.xgraphcoordinates.size(); i++)
@@ -66,7 +65,7 @@ void CombinedCPC::fillGraphLocations() {
 
 	for (int i = 0; i < (signed)data.ygraphcoordinates.size(); i++)
 		data.originalygraphcoordinates.push_back(data.ygraphcoordinates[i]);
-
+	
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,18 +91,16 @@ void CombinedCPC::drawData(float x1, float y1, int index)
 	glTranslatef(x1 + data.pan_x, y1 + data.pan_y, 0);                  // Translates starting position to draw
 	glBegin(GL_LINE_STRIP);
 
-	//glColor3ub(0, (index * 50), 100);
-	//glColor3ub(0, (data.classNum[index] * 50) + 1, 100);
+
 	int classnum = data.classNum[index] - 1;
-	glColor3ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2]);
+	glColor4ub(data.classColor[classnum][0], data.classColor[classnum][1], data.classColor[classnum][2], data.classColor[classnum][3]);
 
 	for (int i = 0; i < (signed)data.classsize; i++) {                  
 		glVertex2f(xratio * data.xdata[index][i], -yratio * data.ydata[index][i]);
 	}
 	glEnd();
-	//glPointSize(4);
-	//glBegin(GL_POINTS);
-	glColor3ub(0, 0, 0);
+
+	glColor4ub(0, 0, 0, data.classColor[classnum][3]);
 
 	for (int i = 0; i < (signed)data.classsize; i++) {                   
 		if (i == 0) { 
@@ -113,15 +110,18 @@ void CombinedCPC::drawData(float x1, float y1, int index)
 			glPointSize(2);
 		}
 		glBegin(GL_POINTS);
-
 		glVertex2f(xratio * data.xdata[index][i], -yratio * data.ydata[index][i]);
-
 		glEnd();
 	}
 	
 	glPopMatrix();
 }
 
+void CombinedCPC::blank() {
+	glClearColor(194 / 255.0f, 206 / 255.0f, 218 / 255.0f, 0.0f);		//194, 206, 218. VisCanvas background color.
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /// <summary>	Create the graphs and display to the window. </summary>
 ///
@@ -129,7 +129,9 @@ void CombinedCPC::drawData(float x1, float y1, int index)
 /// <editor>  Paul Collet </editor>
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 void CombinedCPC::display() {
+
 	glClearColor(194 / 255.0f, 206 / 255.0f, 218 / 255.0f, 0.0f);		//194, 206, 218. VisCanvas background color.
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -148,7 +150,7 @@ void CombinedCPC::display() {
 	glLineWidth(2); 
 
 	/* Draws a graph for each dimension */
-	for (int i = 0; i < 1; i++)       									// Changed I from classsize to one to for combined CPC
+	for (int i = 0; i < 1; i++) // Changed I from classsize to one to for combined CPC
 	{
 		data.drawGraph(data.xgraphcoordinates[i], data.ygraphcoordinates[i]);
 	}

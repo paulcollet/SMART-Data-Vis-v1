@@ -147,7 +147,7 @@ namespace OpenGL_on_a_Windows_Form
 	/// <summary>	The first graph. </summary>
 	private: System::Windows::Forms::Button^  graph1;
 	/// <summary>	The second graph. </summary>
-	private: System::Windows::Forms::Button^  graph2;
+
 	/// <summary>	The third graph. </summary>
 	private: System::Windows::Forms::Button^  graph3;
 	/// <summary>	The fourth graph. </summary>
@@ -185,29 +185,29 @@ namespace OpenGL_on_a_Windows_Form
 	private: System::Windows::Forms::Button^  graph8;
 	/// <summary>	The first group box. </summary>
 	private: System::Windows::Forms::GroupBox^  groupBox1;
-	private: System::Windows::Forms::Button^  graph9;
+
 
 
 	private: System::Windows::Forms::ColorDialog^  colorDialog1;
 	private: System::Windows::Forms::Button^  colorButton;
-	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel1;
+
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::NumericUpDown^  numericUpDown1;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::GroupBox^  groupBox2;
+
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Panel^  panel2;
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  TS_SPC_CPC_button;
 	private: System::Windows::Forms::Button^  button3;
-
-
-
-
-
-
-
+	private: System::Windows::Forms::GroupBox^  groupBox4;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::GroupBox^  groupBox3;
+	private: System::Windows::Forms::GroupBox^  groupBox2;
+	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel1;
+	private: System::Windows::Forms::Button^  graph2;
+	private: System::Windows::Forms::Button^  graph9;
 
 
 	private:
@@ -230,15 +230,17 @@ namespace OpenGL_on_a_Windows_Form
 			this->components = (gcnew System::ComponentModel::Container());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->graph1 = (gcnew System::Windows::Forms::Button());
-			this->graph2 = (gcnew System::Windows::Forms::Button());
 			this->graph3 = (gcnew System::Windows::Forms::Button());
 			this->graph4 = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->graph9 = (gcnew System::Windows::Forms::Button());
 			this->graph8 = (gcnew System::Windows::Forms::Button());
 			this->graph5 = (gcnew System::Windows::Forms::Button());
 			this->graph7 = (gcnew System::Windows::Forms::Button());
 			this->graph6 = (gcnew System::Windows::Forms::Button());
+			this->graph2 = (gcnew System::Windows::Forms::Button());
 			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
 			this->ZoomingLabel = (gcnew System::Windows::Forms::Label());
 			this->vScrollBar1 = (gcnew System::Windows::Forms::VScrollBar());
@@ -251,25 +253,28 @@ namespace OpenGL_on_a_Windows_Form
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->colorButton = (gcnew System::Windows::Forms::Button());
 			this->colorDialog1 = (gcnew System::Windows::Forms::ColorDialog());
-			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->TS_SPC_CPC_button = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
+			this->groupBox2->SuspendLayout();
+			this->tableLayoutPanel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
-			this->tableLayoutPanel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
-			this->groupBox2->SuspendLayout();
 			this->panel2->SuspendLayout();
+			this->groupBox4->SuspendLayout();
+			this->groupBox3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// timer1
@@ -282,36 +287,23 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph1->Location = System::Drawing::Point(15, 11);
+			this->graph1->Location = System::Drawing::Point(6, 6);
 			this->graph1->Margin = System::Windows::Forms::Padding(6);
 			this->graph1->Name = L"graph1";
-			this->graph1->Size = System::Drawing::Size(164, 50);
+			this->graph1->Size = System::Drawing::Size(164, 55);
 			this->graph1->TabIndex = 0;
 			this->graph1->Text = L"Separated CPC";
 			this->graph1->UseVisualStyleBackColor = true;
 			this->graph1->Click += gcnew System::EventHandler(this, &Form1::graph1_Click);
 			// 
-			// graph2
-			// 
-			this->graph2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->graph2->Location = System::Drawing::Point(15, 73);
-			this->graph2->Margin = System::Windows::Forms::Padding(6);
-			this->graph2->Name = L"graph2";
-			this->graph2->Size = System::Drawing::Size(164, 50);
-			this->graph2->TabIndex = 1;
-			this->graph2->Text = L"Combined CPC";
-			this->graph2->UseVisualStyleBackColor = true;
-			this->graph2->Click += gcnew System::EventHandler(this, &Form1::graph2_Click);
-			// 
 			// graph3
 			// 
 			this->graph3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph3->Location = System::Drawing::Point(15, 135);
+			this->graph3->Location = System::Drawing::Point(6, 140);
 			this->graph3->Margin = System::Windows::Forms::Padding(6);
 			this->graph3->Name = L"graph3";
-			this->graph3->Size = System::Drawing::Size(164, 50);
+			this->graph3->Size = System::Drawing::Size(164, 55);
 			this->graph3->TabIndex = 2;
 			this->graph3->Text = L"Separated SPC";
 			this->graph3->UseVisualStyleBackColor = true;
@@ -321,10 +313,10 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph4->Location = System::Drawing::Point(15, 197);
+			this->graph4->Location = System::Drawing::Point(6, 207);
 			this->graph4->Margin = System::Windows::Forms::Padding(6);
 			this->graph4->Name = L"graph4";
-			this->graph4->Size = System::Drawing::Size(164, 50);
+			this->graph4->Size = System::Drawing::Size(164, 55);
 			this->graph4->TabIndex = 3;
 			this->graph4->Text = L"Combined SPC";
 			this->graph4->UseVisualStyleBackColor = true;
@@ -332,30 +324,72 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			// panel1
 			// 
+			this->panel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left));
 			this->panel1->BackColor = System::Drawing::SystemColors::ButtonFace;
-			this->panel1->Controls->Add(this->graph9);
-			this->panel1->Controls->Add(this->graph8);
-			this->panel1->Controls->Add(this->graph5);
-			this->panel1->Controls->Add(this->graph7);
-			this->panel1->Controls->Add(this->graph6);
-			this->panel1->Controls->Add(this->graph2);
-			this->panel1->Controls->Add(this->graph1);
-			this->panel1->Controls->Add(this->graph4);
-			this->panel1->Controls->Add(this->graph3);
-			this->panel1->Location = System::Drawing::Point(-1, 27);
+			this->panel1->Controls->Add(this->groupBox2);
+			this->panel1->Location = System::Drawing::Point(0, 29);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(194, 605);
+			this->panel1->Size = System::Drawing::Size(197, 707);
 			this->panel1->TabIndex = 4;
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left));
+			this->groupBox2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->groupBox2->Controls->Add(this->tableLayoutPanel1);
+			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox2->Location = System::Drawing::Point(2, 8);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(191, 696);
+			this->groupBox2->TabIndex = 15;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Choose Graph";
+			// 
+			// tableLayoutPanel1
+			// 
+			this->tableLayoutPanel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->tableLayoutPanel1->AutoSize = true;
+			this->tableLayoutPanel1->ColumnCount = 1;
+			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle()));
+			this->tableLayoutPanel1->Controls->Add(this->graph9, 0, 9);
+			this->tableLayoutPanel1->Controls->Add(this->graph8, 0, 8);
+			this->tableLayoutPanel1->Controls->Add(this->graph5, 0, 7);
+			this->tableLayoutPanel1->Controls->Add(this->graph7, 0, 6);
+			this->tableLayoutPanel1->Controls->Add(this->graph6, 0, 5);
+			this->tableLayoutPanel1->Controls->Add(this->graph2, 0, 1);
+			this->tableLayoutPanel1->Controls->Add(this->graph1, 0, 0);
+			this->tableLayoutPanel1->Controls->Add(this->graph4, 0, 4);
+			this->tableLayoutPanel1->Controls->Add(this->graph3, 0, 2);
+			this->tableLayoutPanel1->Location = System::Drawing::Point(6, 28);
+			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
+			this->tableLayoutPanel1->RowCount = 10;
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
+			this->tableLayoutPanel1->Size = System::Drawing::Size(176, 603);
+			this->tableLayoutPanel1->TabIndex = 0;
 			// 
 			// graph9
 			// 
 			this->graph9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph9->Location = System::Drawing::Point(15, 507);
+			this->graph9->Location = System::Drawing::Point(6, 542);
 			this->graph9->Margin = System::Windows::Forms::Padding(6);
 			this->graph9->Name = L"graph9";
-			this->graph9->Size = System::Drawing::Size(164, 50);
-			this->graph9->TabIndex = 9;
+			this->graph9->Size = System::Drawing::Size(164, 55);
+			this->graph9->TabIndex = 8;
 			this->graph9->Text = L"Continuous Parallel Coordinates Difference";
 			this->graph9->UseVisualStyleBackColor = true;
 			this->graph9->Click += gcnew System::EventHandler(this, &Form1::graph9_Click);
@@ -364,11 +398,11 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph8->Location = System::Drawing::Point(15, 445);
+			this->graph8->Location = System::Drawing::Point(6, 475);
 			this->graph8->Margin = System::Windows::Forms::Padding(6);
 			this->graph8->Name = L"graph8";
-			this->graph8->Size = System::Drawing::Size(164, 50);
-			this->graph8->TabIndex = 8;
+			this->graph8->Size = System::Drawing::Size(164, 55);
+			this->graph8->TabIndex = 7;
 			this->graph8->Text = L"Continuous Parallel Coordinates";
 			this->graph8->UseVisualStyleBackColor = true;
 			this->graph8->Click += gcnew System::EventHandler(this, &Form1::graph8_Click);
@@ -377,11 +411,11 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph5->Location = System::Drawing::Point(15, 383);
+			this->graph5->Location = System::Drawing::Point(6, 408);
 			this->graph5->Margin = System::Windows::Forms::Padding(6);
 			this->graph5->Name = L"graph5";
-			this->graph5->Size = System::Drawing::Size(164, 50);
-			this->graph5->TabIndex = 7;
+			this->graph5->Size = System::Drawing::Size(164, 55);
+			this->graph5->TabIndex = 6;
 			this->graph5->Text = L"Separated Time Series SPC";
 			this->graph5->UseVisualStyleBackColor = true;
 			this->graph5->Click += gcnew System::EventHandler(this, &Form1::graph5_Click);
@@ -390,11 +424,11 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph7->Location = System::Drawing::Point(15, 321);
+			this->graph7->Location = System::Drawing::Point(6, 341);
 			this->graph7->Margin = System::Windows::Forms::Padding(6);
 			this->graph7->Name = L"graph7";
-			this->graph7->Size = System::Drawing::Size(164, 50);
-			this->graph7->TabIndex = 9;
+			this->graph7->Size = System::Drawing::Size(164, 55);
+			this->graph7->TabIndex = 5;
 			this->graph7->Text = L"Difference Time Series";
 			this->graph7->UseVisualStyleBackColor = true;
 			this->graph7->Click += gcnew System::EventHandler(this, &Form1::graph7_Click);
@@ -403,23 +437,36 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph6->Location = System::Drawing::Point(15, 259);
+			this->graph6->Location = System::Drawing::Point(6, 274);
 			this->graph6->Margin = System::Windows::Forms::Padding(6);
 			this->graph6->Name = L"graph6";
-			this->graph6->Size = System::Drawing::Size(164, 50);
-			this->graph6->TabIndex = 8;
+			this->graph6->Size = System::Drawing::Size(164, 55);
+			this->graph6->TabIndex = 4;
 			this->graph6->Text = L"Standard Time Series";
 			this->graph6->UseVisualStyleBackColor = true;
 			this->graph6->Click += gcnew System::EventHandler(this, &Form1::graph6_Click);
+			// 
+			// graph2
+			// 
+			this->graph2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->graph2->Location = System::Drawing::Point(6, 73);
+			this->graph2->Margin = System::Windows::Forms::Padding(6);
+			this->graph2->Name = L"graph2";
+			this->graph2->Size = System::Drawing::Size(164, 55);
+			this->graph2->TabIndex = 1;
+			this->graph2->Text = L"Combined CPC";
+			this->graph2->UseVisualStyleBackColor = true;
+			this->graph2->Click += gcnew System::EventHandler(this, &Form1::graph2_Click);
 			// 
 			// trackBar1
 			// 
 			this->trackBar1->BackColor = System::Drawing::SystemColors::Control;
 			this->trackBar1->LargeChange = 1;
-			this->trackBar1->Location = System::Drawing::Point(9, 93);
+			this->trackBar1->Location = System::Drawing::Point(9, 103);
 			this->trackBar1->Name = L"trackBar1";
-			this->trackBar1->Size = System::Drawing::Size(185, 45);
-			this->trackBar1->TabIndex = 9;
+			this->trackBar1->Size = System::Drawing::Size(190, 45);
+			this->trackBar1->TabIndex = 16;
 			this->trackBar1->Scroll += gcnew System::EventHandler(this, &Form1::trackBar1_Scroll);
 			// 
 			// ZoomingLabel
@@ -427,7 +474,7 @@ namespace OpenGL_on_a_Windows_Form
 			this->ZoomingLabel->AutoSize = true;
 			this->ZoomingLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ZoomingLabel->Location = System::Drawing::Point(15, 73);
+			this->ZoomingLabel->Location = System::Drawing::Point(15, 83);
 			this->ZoomingLabel->Name = L"ZoomingLabel";
 			this->ZoomingLabel->Size = System::Drawing::Size(43, 16);
 			this->ZoomingLabel->TabIndex = 11;
@@ -435,20 +482,20 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			// vScrollBar1
 			// 
-			this->vScrollBar1->Location = System::Drawing::Point(94, 15);
+			this->vScrollBar1->Location = System::Drawing::Point(117, 24);
 			this->vScrollBar1->Minimum = -100;
 			this->vScrollBar1->Name = L"vScrollBar1";
-			this->vScrollBar1->Size = System::Drawing::Size(23, 50);
-			this->vScrollBar1->TabIndex = 7;
+			this->vScrollBar1->Size = System::Drawing::Size(20, 59);
+			this->vScrollBar1->TabIndex = 14;
 			this->vScrollBar1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &Form1::vScrollBar1_Scroll);
 			// 
 			// hScrollBar1
 			// 
-			this->hScrollBar1->Location = System::Drawing::Point(75, 27);
+			this->hScrollBar1->Location = System::Drawing::Point(95, 42);
 			this->hScrollBar1->Minimum = -100;
 			this->hScrollBar1->Name = L"hScrollBar1";
-			this->hScrollBar1->Size = System::Drawing::Size(63, 28);
-			this->hScrollBar1->TabIndex = 8;
+			this->hScrollBar1->Size = System::Drawing::Size(63, 21);
+			this->hScrollBar1->TabIndex = 15;
 			this->hScrollBar1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &Form1::hScrollBar1_Scroll);
 			// 
 			// PannningLabel
@@ -456,7 +503,7 @@ namespace OpenGL_on_a_Windows_Form
 			this->PannningLabel->AutoSize = true;
 			this->PannningLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->PannningLabel->Location = System::Drawing::Point(15, 32);
+			this->PannningLabel->Location = System::Drawing::Point(15, 43);
 			this->PannningLabel->Name = L"PannningLabel";
 			this->PannningLabel->Size = System::Drawing::Size(57, 16);
 			this->PannningLabel->TabIndex = 10;
@@ -464,92 +511,88 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			// menuStrip1
 			// 
+			this->menuStrip1->BackColor = System::Drawing::SystemColors::ControlLight;
+			this->menuStrip1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(32, 32);
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->fileToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1352, 24);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(6, 2, 0, 4);
+			this->menuStrip1->Size = System::Drawing::Size(1264, 26);
 			this->menuStrip1->TabIndex = 5;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// fileToolStripMenuItem
 			// 
 			this->fileToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->openToolStripMenuItem });
+			this->fileToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->fileToolStripMenuItem->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
-			this->fileToolStripMenuItem->Size = System::Drawing::Size(37, 20);
+			this->fileToolStripMenuItem->Size = System::Drawing::Size(42, 20);
 			this->fileToolStripMenuItem->Text = L"File";
 			// 
 			// openToolStripMenuItem
 			// 
+			this->openToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(103, 22);
+			this->openToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::O));
+			this->openToolStripMenuItem->Size = System::Drawing::Size(153, 22);
 			this->openToolStripMenuItem->Text = L"Open";
 			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::openToolStripMenuItem_Click);
 			// 
 			// statusStrip1
 			// 
+			this->statusStrip1->GripStyle = System::Windows::Forms::ToolStripGripStyle::Visible;
 			this->statusStrip1->ImageScalingSize = System::Drawing::Size(32, 32);
-			this->statusStrip1->Location = System::Drawing::Point(0, 635);
+			this->statusStrip1->Location = System::Drawing::Point(0, 739);
 			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(1352, 22);
+			this->statusStrip1->Size = System::Drawing::Size(1264, 22);
 			this->statusStrip1->TabIndex = 6;
 			this->statusStrip1->Text = L"statusStrip1";
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->groupBox1->Controls->Add(this->trackBar1);
 			this->groupBox1->Controls->Add(this->PannningLabel);
 			this->groupBox1->Controls->Add(this->ZoomingLabel);
 			this->groupBox1->Controls->Add(this->vScrollBar1);
 			this->groupBox1->Controls->Add(this->hScrollBar1);
-			this->groupBox1->Location = System::Drawing::Point(1, 225);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox1->Location = System::Drawing::Point(2, 243);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(200, 150);
+			this->groupBox1->Size = System::Drawing::Size(205, 160);
 			this->groupBox1->TabIndex = 7;
 			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"View Window";
 			// 
 			// colorButton
 			// 
-			this->colorButton->Location = System::Drawing::Point(4, 85);
+			this->colorButton->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->colorButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->colorButton->Location = System::Drawing::Point(6, 81);
 			this->colorButton->Name = L"colorButton";
-			this->colorButton->Size = System::Drawing::Size(192, 48);
-			this->colorButton->TabIndex = 0;
+			this->colorButton->Size = System::Drawing::Size(190, 50);
+			this->colorButton->TabIndex = 12;
 			this->colorButton->Text = L"Display";
 			this->colorButton->UseVisualStyleBackColor = true;
 			this->colorButton->Click += gcnew System::EventHandler(this, &Form1::display_class_click);
 			// 
-			// tableLayoutPanel1
-			// 
-			this->tableLayoutPanel1->CellBorderStyle = System::Windows::Forms::TableLayoutPanelCellBorderStyle::Single;
-			this->tableLayoutPanel1->ColumnCount = 1;
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
-			this->tableLayoutPanel1->Controls->Add(this->button3, 0, 2);
-			this->tableLayoutPanel1->Controls->Add(this->label1, 0, 0);
-			this->tableLayoutPanel1->Controls->Add(this->comboBox1, 0, 1);
-			this->tableLayoutPanel1->Controls->Add(this->colorButton, 0, 2);
-			this->tableLayoutPanel1->Location = System::Drawing::Point(1, 2);
-			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
-			this->tableLayoutPanel1->RowCount = 3;
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 64.19753F)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 35.80247F)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 56)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 55)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(200, 196);
-			this->tableLayoutPanel1->TabIndex = 9;
-			// 
 			// button3
 			// 
 			this->button3->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->button3->Location = System::Drawing::Point(4, 142);
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(6, 142);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(192, 50);
+			this->button3->Size = System::Drawing::Size(190, 50);
 			this->button3->TabIndex = 13;
-			this->button3->Text = L"Choose Color";
+			this->button3->Text = L"Color";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &Form1::colorButton_Click);
 			// 
@@ -558,11 +601,11 @@ namespace OpenGL_on_a_Windows_Form
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(4, 1);
+			this->label1->Location = System::Drawing::Point(5, 27);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(78, 16);
+			this->label1->Size = System::Drawing::Size(92, 16);
 			this->label1->TabIndex = 12;
-			this->label1->Text = L"Class Menu";
+			this->label1->Text = L"Choose Class";
 			// 
 			// comboBox1
 			// 
@@ -570,23 +613,28 @@ namespace OpenGL_on_a_Windows_Form
 			this->comboBox1->BackColor = System::Drawing::SystemColors::ButtonFace;
 			this->comboBox1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(4, 56);
+			this->comboBox1->Location = System::Drawing::Point(6, 46);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(192, 21);
-			this->comboBox1->TabIndex = 1;
+			this->comboBox1->Size = System::Drawing::Size(190, 24);
+			this->comboBox1->TabIndex = 11;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::comboBox1_SelectedIndexChanged);
 			// 
 			// numericUpDown1
 			// 
+			this->numericUpDown1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->numericUpDown1->BackColor = System::Drawing::SystemColors::Info;
 			this->numericUpDown1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->numericUpDown1->Location = System::Drawing::Point(43, 25);
+			this->numericUpDown1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->numericUpDown1->Location = System::Drawing::Point(113, 25);
 			this->numericUpDown1->MaximumSize = System::Drawing::Size(56, 0);
 			this->numericUpDown1->MinimumSize = System::Drawing::Size(56, 0);
 			this->numericUpDown1->Name = L"numericUpDown1";
-			this->numericUpDown1->Size = System::Drawing::Size(56, 20);
-			this->numericUpDown1->TabIndex = 10;
+			this->numericUpDown1->Size = System::Drawing::Size(56, 22);
+			this->numericUpDown1->TabIndex = 17;
 			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 5, 0, 0, 0 });
 			this->numericUpDown1->ValueChanged += gcnew System::EventHandler(this, &Form1::numericUpDown1_ValueChanged);
 			// 
@@ -598,85 +646,144 @@ namespace OpenGL_on_a_Windows_Form
 			this->label2->Size = System::Drawing::Size(0, 13);
 			this->label2->TabIndex = 11;
 			// 
-			// groupBox2
-			// 
-			this->groupBox2->Controls->Add(this->numericUpDown1);
-			this->groupBox2->Location = System::Drawing::Point(1, 427);
-			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(197, 63);
-			this->groupBox2->TabIndex = 12;
-			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Number of Time Moments";
-			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(196, 43);
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->Location = System::Drawing::Point(199, 30);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(37, 33);
-			this->button1->TabIndex = 10;
+			this->button1->Size = System::Drawing::Size(37, 26);
+			this->button1->TabIndex = 9;
 			this->button1->Text = L"<<";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
 			// panel2
 			// 
-			this->panel2->Controls->Add(this->TS_SPC_CPC_button);
-			this->panel2->Controls->Add(this->groupBox2);
-			this->panel2->Controls->Add(this->tableLayoutPanel1);
+			this->panel2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->panel2->Controls->Add(this->groupBox4);
+			this->panel2->Controls->Add(this->groupBox3);
 			this->panel2->Controls->Add(this->groupBox1);
-			this->panel2->Location = System::Drawing::Point(1134, 36);
+			this->panel2->Location = System::Drawing::Point(1054, 29);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(209, 589);
+			this->panel2->Size = System::Drawing::Size(209, 707);
 			this->panel2->TabIndex = 13;
+			// 
+			// groupBox4
+			// 
+			this->groupBox4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->groupBox4->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->groupBox4->Controls->Add(this->numericUpDown1);
+			this->groupBox4->Controls->Add(this->TS_SPC_CPC_button);
+			this->groupBox4->Controls->Add(this->label3);
+			this->groupBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox4->Location = System::Drawing::Point(4, 421);
+			this->groupBox4->Name = L"groupBox4";
+			this->groupBox4->Size = System::Drawing::Size(203, 114);
+			this->groupBox4->TabIndex = 15;
+			this->groupBox4->TabStop = false;
+			this->groupBox4->Text = L"STS-SPC";
 			// 
 			// TS_SPC_CPC_button
 			// 
-			this->TS_SPC_CPC_button->Location = System::Drawing::Point(19, 501);
+			this->TS_SPC_CPC_button->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->TS_SPC_CPC_button->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->TS_SPC_CPC_button->Location = System::Drawing::Point(4, 58);
 			this->TS_SPC_CPC_button->Name = L"TS_SPC_CPC_button";
-			this->TS_SPC_CPC_button->Size = System::Drawing::Size(166, 74);
-			this->TS_SPC_CPC_button->TabIndex = 13;
-			this->TS_SPC_CPC_button->Text = L"Change Connecting Line Color";
+			this->TS_SPC_CPC_button->Size = System::Drawing::Size(190, 50);
+			this->TS_SPC_CPC_button->TabIndex = 18;
+			this->TS_SPC_CPC_button->Text = L"Connecting Line Color";
 			this->TS_SPC_CPC_button->UseVisualStyleBackColor = true;
 			this->TS_SPC_CPC_button->Click += gcnew System::EventHandler(this, &Form1::TS_SPC_CPC_button_Click);
 			// 
+			// label3
+			// 
+			this->label3->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(2, 28);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(97, 16);
+			this->label3->TabIndex = 0;
+			this->label3->Text = L"Time Moments";
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->groupBox3->Controls->Add(this->label1);
+			this->groupBox3->Controls->Add(this->button3);
+			this->groupBox3->Controls->Add(this->comboBox1);
+			this->groupBox3->Controls->Add(this->colorButton);
+			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox3->Location = System::Drawing::Point(2, 8);
+			this->groupBox3->Margin = System::Windows::Forms::Padding(0);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Padding = System::Windows::Forms::Padding(0);
+			this->groupBox3->Size = System::Drawing::Size(205, 199);
+			this->groupBox3->TabIndex = 15;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Class Menu";
+			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(1091, 38);
+			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->button2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->Location = System::Drawing::Point(1016, 30);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(37, 33);
-			this->button2->TabIndex = 14;
+			this->button2->Size = System::Drawing::Size(37, 25);
+			this->button2->TabIndex = 10;
 			this->button2->Text = L">>";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
 			// 
 			// Form1
 			// 
+			this->AutoScroll = true;
+			this->AutoSize = true;
+			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->BackColor = System::Drawing::SystemColors::ButtonFace;
-			this->ClientSize = System::Drawing::Size(1352, 657);
+			this->ClientSize = System::Drawing::Size(1264, 761);
 			this->Controls->Add(this->button2);
-			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->button1);
+			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->statusStrip1);
-			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->menuStrip1);
+			this->Controls->Add(this->panel1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(12);
+			this->MaximumSize = System::Drawing::Size(1600, 1000);
+			this->MinimumSize = System::Drawing::Size(800, 500);
 			this->Name = L"Form1";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"General Paired Coordinate Graphs and Time Series";
 			this->TransparencyKey = System::Drawing::Color::Transparent;
 			this->panel1->ResumeLayout(false);
+			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
+			this->tableLayoutPanel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
-			this->tableLayoutPanel1->ResumeLayout(false);
-			this->tableLayoutPanel1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
-			this->groupBox2->ResumeLayout(false);
 			this->panel2->ResumeLayout(false);
+			this->groupBox4->ResumeLayout(false);
+			this->groupBox4->PerformLayout();
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -723,23 +830,6 @@ namespace OpenGL_on_a_Windows_Form
 
 				data.fileName = toStandardString(path);
 
-				/*
-				try{
-					test.openFile(data);
-					test.sortGraph(data);
-					if (data.xdata.empty()) {
-						throw std::exception();
-						return;
-					}
-
-				}
-				catch(...){
-					// display an error message
-					MessageBox::Show("WARNING: Cannot correctly read data from file, try reformatting or another file.", "Trouble Reading File", MessageBoxButtons::OK, MessageBoxIcon::Error);
-					return;
-				}
-				*/
-
 				graphType = -1;
 				oldZoomValue = 0;
 				graph1_oldZoom = 0;
@@ -755,22 +845,19 @@ namespace OpenGL_on_a_Windows_Form
 				panel1showing = true;
 				panel2showing = true;
 				OpenGL3->resetDrawingArea();
+				OpenGL3->setGraph5ColumnSize(5);
+				OpenGL3->Render1();
 
 				Controls->Clear();
 				InitializeComponent();
 
-				graphType = 1;
-				OpenGL3->graphType = 1;
 				trackBar1->Value = graph1_oldZoom;
 				classnumberselected = -1;
 
 				fileopened = true;
 
-				numericUpDown1->Hide();
-				TS_SPC_CPC_button->Hide();
-				groupBox2->Hide();
-
-				
+				groupBox4->Hide();
+		
 			}
 		}
 
@@ -824,7 +911,10 @@ namespace OpenGL_on_a_Windows_Form
 		{
 			OpenGL3->Render9();
 		}
-
+		else
+		{
+			OpenGL3->Render1();
+		}
 
 		OpenGL3->SwapOpenGLBuffers();
 	}
@@ -846,9 +936,7 @@ namespace OpenGL_on_a_Windows_Form
 			OpenGL3->graphType = 1;
 			trackBar1->Value = graph1_oldZoom;
 
-			numericUpDown1->Hide();
-			TS_SPC_CPC_button->Hide();
-			groupBox2->Hide();
+			groupBox4->Hide();
 		}
 	}
 
@@ -867,9 +955,8 @@ namespace OpenGL_on_a_Windows_Form
 			OpenGL3->graphType = 2;
 			trackBar1->Value = graph2_oldZoom;
 
-			numericUpDown1->Hide();
-			TS_SPC_CPC_button->Hide();
-			groupBox2->Hide();
+			groupBox4->Hide();
+
 		}
 	}
 
@@ -888,9 +975,8 @@ namespace OpenGL_on_a_Windows_Form
 			OpenGL3->graphType = 3;
 			trackBar1->Value = graph3_oldZoom;
 
-			numericUpDown1->Hide();
-			TS_SPC_CPC_button->Hide();
-			groupBox2->Hide();
+			groupBox4->Hide();
+
 		}
 	}
 
@@ -909,9 +995,8 @@ namespace OpenGL_on_a_Windows_Form
 			OpenGL3->graphType = 4;
 			trackBar1->Value = graph4_oldZoom;
 
-			numericUpDown1->Hide();
-			TS_SPC_CPC_button->Hide();
-			groupBox2->Hide();
+			groupBox4->Hide();
+
 		}
 	}
 	protected:
@@ -963,7 +1048,6 @@ namespace OpenGL_on_a_Windows_Form
 			}
 		}
 
-
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -980,9 +1064,7 @@ namespace OpenGL_on_a_Windows_Form
 			graphType = 5;
 			OpenGL3->graphType = 5;
 			trackBar1->Value = graph5_oldZoom;
-			numericUpDown1->Show();
-			TS_SPC_CPC_button->Show();
-			groupBox2->Show();
+			groupBox4->Show();
 		}
 
 
@@ -1003,9 +1085,8 @@ namespace OpenGL_on_a_Windows_Form
 			OpenGL3->graphType = 6;
 			trackBar1->Value = graph6_oldZoom;
 
-			numericUpDown1->Hide();
-			TS_SPC_CPC_button->Hide();
-			groupBox2->Hide();
+			groupBox4->Hide();
+
 		}
 	}
 
@@ -1024,9 +1105,8 @@ namespace OpenGL_on_a_Windows_Form
 			OpenGL3->graphType = 7;
 			trackBar1->Value = graph7_oldZoom;
 
-			numericUpDown1->Hide();
-			TS_SPC_CPC_button->Hide();
-			groupBox2->Hide();
+			groupBox4->Hide();
+
 		}
 	}
 
@@ -1045,9 +1125,8 @@ namespace OpenGL_on_a_Windows_Form
 			OpenGL3->graphType = 8;
 			trackBar1->Value = graph8_oldZoom;
 
-			numericUpDown1->Hide();
-			TS_SPC_CPC_button->Hide();
-			groupBox2->Hide();
+			groupBox4->Hide();
+
 		}
 	}
 
@@ -1065,9 +1144,7 @@ namespace OpenGL_on_a_Windows_Form
 			OpenGL3->graphType = 9;
 			trackBar1->Value = graph9_oldZoom;
 
-			numericUpDown1->Hide();
-			TS_SPC_CPC_button->Hide();
-			groupBox2->Hide();
+			groupBox4->Hide();
 		}
 	}
 
@@ -1188,7 +1265,7 @@ private: System::Void colorButton_Click(System::Object^  sender, System::EventAr
 }
 
 private: System::Void display_class_click(System::Object^  sender, System::EventArgs^  e) {
-	
+	OpenGL3->setAlpha(classnumberselected);
 }
 
 // Select class drop-down menu

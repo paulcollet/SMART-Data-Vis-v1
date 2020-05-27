@@ -13,6 +13,7 @@
 #include "stdafx.h"
 #include "ClassData.h"
 #include "FileHandling.h"
+#include "Blank.h"
 
 #include "SeparatedCPC.h"
 #include "CombinedCPC.h"
@@ -26,6 +27,8 @@
 
 #include "Cont_Parallel_Coordinates.h"
 #include "Dist_Cont_Parallel_Coords.h"
+
+#include "NetworkGraph.h"
 
 
 
@@ -52,6 +55,9 @@ namespace OpenGLForm
 	FileHandling newFile;
 
 	/// <summary>	The first graph. </summary>
+	Blank graph0;
+
+	/// <summary>	The first graph. </summary>
 	SeparatedCPC graph1;
 	/// <summary>	The second graph. </summary>
 	CombinedCPC graph2;
@@ -74,6 +80,9 @@ namespace OpenGLForm
 
 	/// <summary>	The graph 9. </summary>
 	Dist_Cont_Parallel_Coords graph9;
+
+	/// <summary>	The graph 10. </summary>
+	NetworkGraph graph10;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	An open gl 3. </summary>
@@ -205,6 +214,7 @@ namespace OpenGLForm
 				graph7.data.setClassColor(R, G, B, classnumber);
 				graph8.data.setClassColor(R, G, B, classnumber);
 				graph9.data.setClassColor(R, G, B, classnumber);
+				graph10.data.setClassColor(R, G, B, classnumber);
 			}
 		}
 
@@ -221,6 +231,7 @@ namespace OpenGLForm
 				graph7.data.classAlpha(classnumber);
 				graph8.data.classAlpha(classnumber);
 				graph9.data.classAlpha(classnumber);
+				graph10.data.classAlpha(classnumber);
 			}
 		}
 
@@ -250,6 +261,11 @@ namespace OpenGLForm
 
 		/* RENDERING FOR DIFFERENT GRAPHS *//////////////////////////////////////////////////////////////////////////////////////
 
+		System::Void Render(System::Void)
+		{
+			graph0.display();
+		}
+
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		/// <summary>	Renders SCPC. </summary>
 		///
@@ -257,7 +273,7 @@ namespace OpenGLForm
 		///
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		System::Void Render(System::Void)
+		System::Void Render1(System::Void)
 		{
 			//std::fstream g1;
 			//g1.open("S_CPC.csv", std::ios::in, std::ios::app);
@@ -364,20 +380,12 @@ namespace OpenGLForm
 
 		System::Void Render9(System::Void)
 		{
-			//std::fstream g9;
-			//g9.open("Dis_ConParC.csv", std::ios::in, std::ios::app);
-			//auto start = std::chrono::high_resolution_clock::now();
 			graph9.display();
-			//auto duration = std::chrono::duration_cast<std::chrono::microseconds>
-			//	(std::chrono::high_resolution_clock::now() - start);
-			//g9 << duration.count() << ",";
-			//g9.close();
 		}
 
-		// blank screen
-		void Render1(void)
+		System::Void Render10(System::Void)
 		{
-			graph2.blank();
+			graph10.display();
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -433,6 +441,9 @@ namespace OpenGLForm
 			graph9.data.~ClassData();
 			graph9.data.resetSomeVars();
 			graph9.clearFields();
+
+			graph10.data.~ClassData();
+			graph10.data.resetSomeVars();
 
 		}
 
@@ -572,6 +583,13 @@ namespace OpenGLForm
 			graph9.fillGraphLocations();
 			graph9.data.setClassColors();
 
+			//Network Graph
+			graph10.data = data;
+			//newFile.normalizeDataV2(graph1.data);
+			graph10.data.graphwidth = worldWidth;
+			graph10.data.graphheight = worldHeight;
+			graph10.data.setClassColors();
+
 			originalWH = worldHeight; // Saves orginals to use for increments like for zooming.
 			originalWW = worldWidth;
 		}
@@ -669,6 +687,15 @@ namespace OpenGLForm
 
 				graph9.data.panamount -= scaler * 2;
 			}
+			else if (graphType == 10) { // Distance Continuous Parallel Coordinates
+
+				graph10.data.worldWidth -= width / 20 * scaler;
+				graph10.data.worldHeight -= height / 20 * scaler;
+				graph10.data.leftWidth += width / 20 * scaler;
+				graph10.data.bottomHeight += height / 20 * scaler;
+
+				graph10.data.panamount -= scaler * 2;
+			}
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -753,6 +780,14 @@ namespace OpenGLForm
 					graph9.data.pan_x += graph9.data.panamount;
 				}
 			}
+			else if (graphType == 10) { // Distance Continuous Parallel Coordinates
+				if (right) {
+					graph10.data.pan_x -= graph9.data.panamount;
+				}
+				else {
+					graph10.data.pan_x += graph9.data.panamount;
+				}
+			}
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -835,6 +870,14 @@ namespace OpenGLForm
 				}
 				else {
 					graph9.data.pan_y += graph9.data.panamount;
+				}
+			}
+			else if (graphType == 10) { // Distance Continuous Parallel Coordinates
+				if (up) {
+					graph10.data.pan_y -= graph9.data.panamount;
+				}
+				else {
+					graph10.data.pan_y += graph9.data.panamount;
 				}
 			}
 		}

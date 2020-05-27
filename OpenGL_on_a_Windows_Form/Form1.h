@@ -208,6 +208,7 @@ namespace OpenGL_on_a_Windows_Form
 	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel1;
 	private: System::Windows::Forms::Button^  graph2;
 	private: System::Windows::Forms::Button^  graph9;
+private: System::Windows::Forms::Button^  NetworkGraph_button;
 
 
 	private:
@@ -265,6 +266,7 @@ namespace OpenGL_on_a_Windows_Form
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->NetworkGraph_button = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->tableLayoutPanel1->SuspendLayout();
@@ -290,7 +292,7 @@ namespace OpenGL_on_a_Windows_Form
 			this->graph1->Location = System::Drawing::Point(6, 6);
 			this->graph1->Margin = System::Windows::Forms::Padding(6);
 			this->graph1->Name = L"graph1";
-			this->graph1->Size = System::Drawing::Size(164, 55);
+			this->graph1->Size = System::Drawing::Size(164, 50);
 			this->graph1->TabIndex = 0;
 			this->graph1->Text = L"Separated CPC";
 			this->graph1->UseVisualStyleBackColor = true;
@@ -300,10 +302,10 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph3->Location = System::Drawing::Point(6, 140);
+			this->graph3->Location = System::Drawing::Point(6, 130);
 			this->graph3->Margin = System::Windows::Forms::Padding(6);
 			this->graph3->Name = L"graph3";
-			this->graph3->Size = System::Drawing::Size(164, 55);
+			this->graph3->Size = System::Drawing::Size(164, 50);
 			this->graph3->TabIndex = 2;
 			this->graph3->Text = L"Separated SPC";
 			this->graph3->UseVisualStyleBackColor = true;
@@ -313,10 +315,10 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph4->Location = System::Drawing::Point(6, 207);
+			this->graph4->Location = System::Drawing::Point(6, 192);
 			this->graph4->Margin = System::Windows::Forms::Padding(6);
 			this->graph4->Name = L"graph4";
-			this->graph4->Size = System::Drawing::Size(164, 55);
+			this->graph4->Size = System::Drawing::Size(164, 50);
 			this->graph4->TabIndex = 3;
 			this->graph4->Text = L"Combined SPC";
 			this->graph4->UseVisualStyleBackColor = true;
@@ -356,6 +358,7 @@ namespace OpenGL_on_a_Windows_Form
 			this->tableLayoutPanel1->AutoSize = true;
 			this->tableLayoutPanel1->ColumnCount = 1;
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle()));
+			this->tableLayoutPanel1->Controls->Add(this->NetworkGraph_button, 0, 10);
 			this->tableLayoutPanel1->Controls->Add(this->graph9, 0, 9);
 			this->tableLayoutPanel1->Controls->Add(this->graph8, 0, 8);
 			this->tableLayoutPanel1->Controls->Add(this->graph5, 0, 7);
@@ -367,7 +370,7 @@ namespace OpenGL_on_a_Windows_Form
 			this->tableLayoutPanel1->Controls->Add(this->graph3, 0, 2);
 			this->tableLayoutPanel1->Location = System::Drawing::Point(6, 28);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
-			this->tableLayoutPanel1->RowCount = 10;
+			this->tableLayoutPanel1->RowCount = 11;
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
@@ -378,17 +381,18 @@ namespace OpenGL_on_a_Windows_Form
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle()));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(176, 603);
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
+			this->tableLayoutPanel1->Size = System::Drawing::Size(176, 635);
 			this->tableLayoutPanel1->TabIndex = 0;
 			// 
 			// graph9
 			// 
 			this->graph9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph9->Location = System::Drawing::Point(6, 542);
+			this->graph9->Location = System::Drawing::Point(6, 502);
 			this->graph9->Margin = System::Windows::Forms::Padding(6);
 			this->graph9->Name = L"graph9";
-			this->graph9->Size = System::Drawing::Size(164, 55);
+			this->graph9->Size = System::Drawing::Size(164, 50);
 			this->graph9->TabIndex = 8;
 			this->graph9->Text = L"Continuous Parallel Coordinates Difference";
 			this->graph9->UseVisualStyleBackColor = true;
@@ -398,10 +402,10 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph8->Location = System::Drawing::Point(6, 475);
+			this->graph8->Location = System::Drawing::Point(6, 440);
 			this->graph8->Margin = System::Windows::Forms::Padding(6);
 			this->graph8->Name = L"graph8";
-			this->graph8->Size = System::Drawing::Size(164, 55);
+			this->graph8->Size = System::Drawing::Size(164, 50);
 			this->graph8->TabIndex = 7;
 			this->graph8->Text = L"Continuous Parallel Coordinates";
 			this->graph8->UseVisualStyleBackColor = true;
@@ -411,10 +415,10 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph5->Location = System::Drawing::Point(6, 408);
+			this->graph5->Location = System::Drawing::Point(6, 378);
 			this->graph5->Margin = System::Windows::Forms::Padding(6);
 			this->graph5->Name = L"graph5";
-			this->graph5->Size = System::Drawing::Size(164, 55);
+			this->graph5->Size = System::Drawing::Size(164, 50);
 			this->graph5->TabIndex = 6;
 			this->graph5->Text = L"Separated Time Series SPC";
 			this->graph5->UseVisualStyleBackColor = true;
@@ -424,10 +428,10 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph7->Location = System::Drawing::Point(6, 341);
+			this->graph7->Location = System::Drawing::Point(6, 316);
 			this->graph7->Margin = System::Windows::Forms::Padding(6);
 			this->graph7->Name = L"graph7";
-			this->graph7->Size = System::Drawing::Size(164, 55);
+			this->graph7->Size = System::Drawing::Size(164, 50);
 			this->graph7->TabIndex = 5;
 			this->graph7->Text = L"Difference Time Series";
 			this->graph7->UseVisualStyleBackColor = true;
@@ -437,10 +441,10 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph6->Location = System::Drawing::Point(6, 274);
+			this->graph6->Location = System::Drawing::Point(6, 254);
 			this->graph6->Margin = System::Windows::Forms::Padding(6);
 			this->graph6->Name = L"graph6";
-			this->graph6->Size = System::Drawing::Size(164, 55);
+			this->graph6->Size = System::Drawing::Size(164, 50);
 			this->graph6->TabIndex = 4;
 			this->graph6->Text = L"Standard Time Series";
 			this->graph6->UseVisualStyleBackColor = true;
@@ -450,10 +454,10 @@ namespace OpenGL_on_a_Windows_Form
 			// 
 			this->graph2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->graph2->Location = System::Drawing::Point(6, 73);
+			this->graph2->Location = System::Drawing::Point(6, 68);
 			this->graph2->Margin = System::Windows::Forms::Padding(6);
 			this->graph2->Name = L"graph2";
-			this->graph2->Size = System::Drawing::Size(164, 55);
+			this->graph2->Size = System::Drawing::Size(164, 50);
 			this->graph2->TabIndex = 1;
 			this->graph2->Text = L"Combined CPC";
 			this->graph2->UseVisualStyleBackColor = true;
@@ -746,6 +750,19 @@ namespace OpenGL_on_a_Windows_Form
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
 			// 
+			// NetworkGraph_button
+			// 
+			this->NetworkGraph_button->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->NetworkGraph_button->Location = System::Drawing::Point(6, 564);
+			this->NetworkGraph_button->Margin = System::Windows::Forms::Padding(6);
+			this->NetworkGraph_button->Name = L"NetworkGraph_button";
+			this->NetworkGraph_button->Size = System::Drawing::Size(164, 50);
+			this->NetworkGraph_button->TabIndex = 9;
+			this->NetworkGraph_button->Text = L"Network Graph";
+			this->NetworkGraph_button->UseVisualStyleBackColor = true;
+			this->NetworkGraph_button->Click += gcnew System::EventHandler(this, &Form1::NetworkGraph_button_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScroll = true;
@@ -846,7 +863,7 @@ namespace OpenGL_on_a_Windows_Form
 				panel2showing = true;
 				OpenGL3->resetDrawingArea();
 				OpenGL3->setGraph5ColumnSize(5);
-				OpenGL3->Render1();
+				OpenGL3->Render();
 
 				Controls->Clear();
 				InitializeComponent();
@@ -876,7 +893,7 @@ namespace OpenGL_on_a_Windows_Form
 		UNREFERENCED_PARAMETER(e);
 
 		if (graphType == 1) { 				//Separated CPC graph1
-			OpenGL3->Render();
+			OpenGL3->Render1();
 		}
 		else if (graphType == 2)			//Combined CPC graph2
 		{
@@ -913,7 +930,7 @@ namespace OpenGL_on_a_Windows_Form
 		}
 		else
 		{
-			OpenGL3->Render1();
+			OpenGL3->Render();
 		}
 
 		OpenGL3->SwapOpenGLBuffers();
@@ -1019,7 +1036,8 @@ namespace OpenGL_on_a_Windows_Form
 		int graph8_oldZoom;
 		/// <summary>	The graph 9 old zoom. </summary>
 		int graph9_oldZoom;
-
+		/// <summary>	The graph 9 old zoom. </summary>
+		int graph10_oldZoom;
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Opens tool strip menu item click. </summary>
 	///
@@ -1143,6 +1161,16 @@ namespace OpenGL_on_a_Windows_Form
 			graphType = 9;
 			OpenGL3->graphType = 9;
 			trackBar1->Value = graph9_oldZoom;
+
+			groupBox4->Hide();
+		}
+	}
+
+	private: System::Void NetworkGraph_button_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (fileopened) {
+			graphType = 10;
+			OpenGL3->graphType = 10;
+			trackBar1->Value = graph10_oldZoom;
 
 			groupBox4->Hide();
 		}
@@ -1330,8 +1358,6 @@ private: System::Void TS_SPC_CPC_button_Click(System::Object^  sender, System::E
 	}
 
 }
-
-
 
 };
 }
